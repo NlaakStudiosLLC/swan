@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package gwfchain.blog;
+
+option go_package = "gwfchain/x/blog/types";
+
+// MsgCreatePost defines a CreatePost message
+message Post {
+  string creator = 1;
+  uint64 id = 2;
+  string title = 3;
+  string body = 4;
+  repeated string tags = 5;
+  string imgurl = 6;  
+}

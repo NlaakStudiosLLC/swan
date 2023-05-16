@@ -1,0 +1,16 @@
+syntax = "proto3";
+package gwfchain.sqrz;
+
+import "gogoproto/gogo.proto";
+import "gwfchain/sqrz/params.proto";
+import "gwfchain/sqrz/square.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "gwfchain/x/sqrz/types";
+
+// GenesisState defines the sqrz module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated Square squareList = 2 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+package gwfchain.sqrz;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "gwfchain/x/sqrz/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+  bool enabled = 1 [(gogoproto.moretags) = "yaml:\"enabled\""];
+  uint64 costperday = 2 [(gogoproto.moretags) = "yaml:\"costperday\""];
+  uint64 finebase = 3 [(gogoproto.moretags) = "yaml:\"finebase\""];
+  uint64 divisor = 4 [(gogoproto.moretags) = "yaml:\"divisor\""];
+  uint64 finescalarpct = 5 [(gogoproto.moretags) = "yaml:\"finescalarpct\""];
+}

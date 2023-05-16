@@ -1,0 +1,55 @@
+syntax = "proto3";
+package gwfchain.fund;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "gwfchain/x/fund/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc CreateFundOrder(MsgCreateFundOrder) returns (MsgCreateFundOrderResponse);
+  rpc FillFundOrder(MsgFillFundOrder) returns (MsgFillFundOrderResponse);
+  rpc AcceptFundOrder(MsgAcceptFundOrder) returns (MsgAcceptFundOrderResponse);
+  rpc CancelFundOrder(MsgCancelFundOrder) returns (MsgCancelFundOrderResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateFundOrder {
+  string creator = 1;
+  int32 amount = 2;
+  string asset = 3;
+  int32 fee = 4;
+}
+
+message MsgCreateFundOrderResponse {
+}
+
+message MsgFillFundOrder {
+  string creator = 1;
+  int32 orderId = 2;
+  int32 amount = 3;
+  string asset = 4;
+  int32 fee = 5;
+}
+
+message MsgFillFundOrderResponse {
+}
+
+message MsgAcceptFundOrder {
+  string creator = 1;
+  int32 orderId = 2;
+  string fulfiller = 3;
+}
+
+message MsgAcceptFundOrderResponse {
+}
+
+message MsgCancelFundOrder {
+  string creator = 1;
+  int32 orderId = 2;
+}
+
+message MsgCancelFundOrderResponse {
+}
+
+// this line is used by starport scaffolding # proto/tx/message

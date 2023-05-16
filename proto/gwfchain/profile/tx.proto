@@ -1,0 +1,37 @@
+syntax = "proto3";
+package gwfchain.profile;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "gwfchain/x/profile/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc CreateProfile(MsgCreateProfile) returns (MsgCreateProfileResponse);
+  rpc UpdateProfile(MsgUpdateProfile) returns (MsgUpdateProfileResponse);
+  rpc DeleteProfile(MsgDeleteProfile) returns (MsgDeleteProfileResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateProfile {
+  string creator = 1;
+}
+
+message MsgCreateProfileResponse {
+}
+
+message MsgUpdateProfile {
+  string creator = 1;
+}
+
+message MsgUpdateProfileResponse {
+}
+
+message MsgDeleteProfile {
+  string creator = 1;
+}
+
+message MsgDeleteProfileResponse {
+}
+
+// this line is used by starport scaffolding # proto/tx/message

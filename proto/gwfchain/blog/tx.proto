@@ -1,0 +1,38 @@
+syntax = "proto3";
+package gwfchain.blog;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "gwfchain/x/blog/types";
+
+// Msg defines the Msg service.
+service Msg {
+  rpc CreateBlogPost(MsgCreateBlogPost) returns (MsgCreateBlogPostResponse);
+  rpc SetEnabled(MsgSetEnabled) returns (MsgSetEnabledResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateBlogPost {
+  string creator = 1;
+  string title = 2;
+  string body = 3;
+  repeated string tags = 4;
+  string imgurl = 5;
+}
+
+message MsgCreateBlogPostResponse {
+    uint64 id = 1;
+}
+
+message MsgSetEnabled {
+  string creator = 1;
+  bool enabled = 2;
+}
+
+// MsgSetEnabledResponse returns a string message as to state if the post is enabled or disabled 
+// or if the user is not the creator or there is an error
+message MsgSetEnabledResponse {
+  string msg =1; 
+}
+
+// this line is used by starport scaffolding # proto/tx/message

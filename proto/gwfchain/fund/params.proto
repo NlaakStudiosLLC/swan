@@ -1,0 +1,16 @@
+syntax = "proto3";
+package gwfchain.fund;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "gwfchain/x/fund/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+  bool enabled = 1 [(gogoproto.moretags) = "yaml:\"enabled\""];
+  int32 minFee = 2 [(gogoproto.moretags) = "yaml:\"min_fee\""];
+  int32 maxFee = 3 [(gogoproto.moretags) = "yaml:\"max_fee\""];
+  int32 orderLifespan = 4 [(gogoproto.moretags) = "yaml:\"order_lifespan\""];
+}

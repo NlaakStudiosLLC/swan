@@ -1,0 +1,14 @@
+syntax = "proto3";
+package gwfchain.blog;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "gwfchain/x/blog/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+  bool enabled = 1 [(gogoproto.moretags) = "yaml:\"enabled\""];
+  int32 payperview = 2 [(gogoproto.moretags) = "yaml:\"payperview\""];
+}

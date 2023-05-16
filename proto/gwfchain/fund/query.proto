@@ -1,0 +1,69 @@
+syntax = "proto3";
+package gwfchain.fund;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gwfchain/fund/params.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "gwfchain/x/fund/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/gwfchain/fund/params";
+  }
+  // Queries a list of Orders items.
+	rpc Orders(QueryOrdersRequest) returns (QueryOrdersResponse) {
+		option (google.api.http).get = "/gwfchain/fund/orders";
+	}
+
+// Queries a list of Order items.
+	rpc Order(QueryOrderRequest) returns (QueryOrderResponse) {
+		option (google.api.http).get = "/gwfchain/fund/order/{orderId}";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryOrdersRequest {
+}
+
+message QueryOrdersResponse {
+  string orderId = 1;
+  string creator = 2;
+  string amount = 3;
+  string asset = 4;
+  string fee = 5;
+  string fulfillers = 6;
+  string createdAt = 7;
+  string completedAt = 8;
+}
+
+message QueryOrderRequest {
+  int32 orderId = 1;
+}
+
+message QueryOrderResponse {
+  string orderId = 1;
+  string creator = 2;
+  string amount = 3;
+  string asset = 4;
+  string fee = 5;
+  string fulfillers = 6;
+  string createdAt = 7;
+  string completedAt = 8;
+}
+
+// this line is used by starport scaffolding # 3

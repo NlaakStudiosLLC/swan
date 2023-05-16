@@ -1,0 +1,74 @@
+syntax = "proto3";
+package gwfchain.sqrz;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gwfchain/sqrz/params.proto";
+import "gwfchain/sqrz/square.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "gwfchain/x/sqrz/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/gwfchain/sqrz/params";
+  }
+  // Queries a Square by index.
+	rpc Square(QueryGetSquareRequest) returns (QueryGetSquareResponse) {
+		option (google.api.http).get = "/gwfchain/sqrz/square/{index}";
+	}
+
+	// Queries a list of Square items.
+	rpc SquareAll(QueryAllSquareRequest) returns (QueryAllSquareResponse) {
+		option (google.api.http).get = "/gwfchain/sqrz/square";
+	}
+
+// Queries a list of SqrzByTags items.
+	rpc SqrzByTags(QuerySqrzByTagsRequest) returns (QuerySqrzByTagsResponse) {
+		option (google.api.http).get = "/gwfchain/sqrz/sqrz_by_tags/{squareCreator}/{squareGuid}/{squareTags}/{squareEsrb}";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetSquareRequest {
+	  string index = 1;
+
+}
+
+message QueryGetSquareResponse {
+	Square square = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllSquareRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllSquareResponse {
+	repeated Square square = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QuerySqrzByTagsRequest {
+  string squareCreator = 1;
+  string squareGuid = 2;
+  repeated string squareTags = 3;
+  string squareEsrb = 4;
+}
+
+message QuerySqrzByTagsResponse {
+}
+
+// this line is used by starport scaffolding # 3

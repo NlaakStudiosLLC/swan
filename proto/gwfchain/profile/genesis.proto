@@ -1,0 +1,14 @@
+syntax = "proto3";
+package gwfchain.profile;
+
+import "gogoproto/gogo.proto";
+import "gwfchain/profile/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "gwfchain/x/profile/types";
+
+// GenesisState defines the profile module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}

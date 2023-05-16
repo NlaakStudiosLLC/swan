@@ -1,0 +1,9 @@
+# Ignore frontend stuff as we have a separate repo for that
+# vue/
+# /ts-client
+node_modules/
+# misc
+release/
+.idea/
+.vscode/
+.DS_Store

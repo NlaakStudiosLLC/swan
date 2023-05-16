@@ -1,0 +1,25 @@
+syntax = "proto3";
+package gwfchain.sqrz;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "gwfchain/x/sqrz/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc GetByFilter(MsgGetByFilter) returns (MsgGetByFilterResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgGetByFilter {
+  string creator = 1;
+  string squareCreator = 2;
+  string squareGuid = 3;
+  repeated string squareTags = 4;
+  string squareEsrb = 5;
+}
+
+message MsgGetByFilterResponse {
+}
+
+// this line is used by starport scaffolding # proto/tx/message
